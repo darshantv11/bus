@@ -12,18 +12,25 @@ import {
 import { globalStyles } from '../../styles/global';
 import { COLORS } from '../../constants/theme';
 
-export default function LoginScreen() {
+export default function LoginScreen({onLoginSuccess}) {
   const [mobile, setMobile] = useState('');
 
   const handleLogin = () => {
-    if (mobile.length !== 10 || !/^\d{10}$/.test(mobile)) {
-      Alert.alert('Invalid number', 'Please enter a valid 10-digit mobile number');
-      return;
-    }
+  if (mobile.length !== 10 || !/^\d{10}$/.test(mobile)) {
+    Alert.alert('Invalid number', 'Please enter a valid 10-digit mobile number');
+    return;
+  }
 
-    // Simulate OTP send
-    Alert.alert('OTP Sent', `OTP sent to ${mobile} (simulated)`);
-  };
+  Alert.alert('OTP Sent', `OTP sent to ${mobile} (simulated)`, [
+    {
+      text: 'OK',
+      onPress: () => {
+        if (onLoginSuccess) onLoginSuccess(); // 🚀 Navigate to TabNavigator
+      },
+    },
+  ]);
+};
+
 
   return (
     <KeyboardAvoidingView

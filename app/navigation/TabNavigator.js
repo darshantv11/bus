@@ -9,7 +9,7 @@ import LoginScreen from '../screens/LoginScreen';
 
 const Tab = createBottomTabNavigator();
 
-export default function TabNavigator() {
+export default function TabNavigator({ isLoggedIn }) {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -44,7 +44,7 @@ export default function TabNavigator() {
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
       <Tab.Screen name="Notifications" component={NotificationsScreen} />
-      <Tab.Screen name="Login" component={LoginScreen} />
+      {!isLoggedIn && <Tab.Screen name="Login" component={LoginScreen} />}
     </Tab.Navigator>
   );
 }
