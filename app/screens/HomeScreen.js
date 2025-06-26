@@ -39,7 +39,7 @@ export default function HomeScreen() {
             >
               <Image
                 source={require('../../assets/bus2.png')}
-                style={{ width: 0, height: 60 }}
+                style={{ width: 60, height: 60 }}
                 resizeMode="contain"
               />
             </Marker>
